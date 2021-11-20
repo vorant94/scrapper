@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "rutracker": "node --experimental-specifier-resolution=node src/rutracker/index.js"
+    "rutracker": "node --experimental-specifier-resolution=node src/rutracker"
   },
   "keywords": [],
   "author": "vorant94",
