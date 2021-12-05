@@ -14,8 +14,10 @@ export async function search(page) {
     const category = CATEGORIES.find(({text}) => text.includes(query.category));
     await page.select(`#fs-main`, category.value);
 
-    await page.click(`#tr-submit-btn`);
-    await page.waitForNavigation();
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click(`#tr-submit-btn`)
+    ]);
 
     let searchResult = await page.$$eval(`#tor-tbl > tbody > tr > td`, ([element]) => element.innerHTML);
     searchResult = searchResult.replace(/^\s+|\s+$/g, '');
