@@ -1,16 +1,10 @@
 import * as puppeteer from 'puppeteer';
 import { Browser, ElementHandle, Page } from 'puppeteer';
 import { envSchema } from 'env-schema';
-import * as SCHEMA from './static/schema.json';
 import { BROWSER_LOGGER_TOKEN, browserLoggerFunction } from '../shared';
 import { login } from './login';
 import { search, SearchResult } from './search';
-
-export interface Env {
-  PUPPETEER_HEADLESS: boolean,
-  RUTRACKER_LOGIN: string,
-  RUTRACKER_PASSWORD: string
-}
+import { Env, SCHEMA } from '../core';
 
 (async () => {
   const config: Env = envSchema<Env>({
