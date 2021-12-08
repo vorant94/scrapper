@@ -2,23 +2,26 @@
   "name": "puppeteer-scripts",
   "version": "1.0.0",
   "description": "A bunch of scripts for web scrapping",
-  "main": "index.js",
-  "type": "module",
   "scripts": {
-    "rutracker": "node --experimental-specifier-resolution=node src/rutracker"
+    "rutracker": "ts-node src/rutracker",
+    "lint": "eslint --ext .ts ."
   },
   "keywords": [],
   "author": "vorant94",
   "license": "ISC",
   "devDependencies": {
+    "@types/puppeteer": "^5.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1"
+    "eslint-plugin-promise": "^5.2.0"
   },
   "dependencies": {
     "env-schema": "^3.5.0",
-    "puppeteer": "^11.0.0"
+    "puppeteer": "^11.0.0",
+    "ts-node": "^10.4.0"
   }
 }
