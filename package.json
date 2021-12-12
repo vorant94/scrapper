@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A bunch of scripts for web scrapping",
   "scripts": {
+    "build": "tsc",
     "build:watch": "tsc --watch",
     "rutracker": "node ./dist/rutracker",
     "lint": "eslint . --fix"
