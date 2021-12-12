@@ -1,5 +1,5 @@
-import * as CATEGORIES from '../static/categories.json';
-import * as QUERIES from '../static/queries.json';
+import CATEGORIES from '../static/categories.json';
+import QUERIES from '../static/queries.json';
 import { Page } from 'puppeteer';
 import { SearchResult } from './search-result';
 
@@ -17,6 +17,9 @@ export async function search (page: Page): Promise<SearchResult[]> {
     await page.type('#title-search', query.title);
 
     const category = CATEGORIES.find(({ text }) => text.includes(query.category));
+    if (!category) {
+      throw new Error(`Category [${query.category}] is not found`);
+    }
     await page.select('#fs-main', category.value);
 
     await Promise.all([

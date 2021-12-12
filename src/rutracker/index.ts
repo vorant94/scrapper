@@ -1,4 +1,4 @@
-import * as puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer';
 import { Browser, ElementHandle, Page } from 'puppeteer';
 import { envSchema } from 'env-schema';
 import { BROWSER_LOGGER_TOKEN, browserLoggerFunction } from '../shared';

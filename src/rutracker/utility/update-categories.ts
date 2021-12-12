@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import { Page } from 'puppeteer';
 
 const FORM_ID = '#tr-form';
@@ -8,9 +8,9 @@ export async function updateCategories (page: Page) {
 
   const categories = await page.$$eval(
     `${FORM_ID} select[name="f[]"] option`,
-    (elements: HTMLOptionElement[]) => elements.map(element => ({
+    (elements) => elements.map(element => ({
       text: element.innerHTML,
-      value: element.value
+      value: (element as HTMLOptionElement).value
     }))
   );
 

@@ -17,9 +17,10 @@ export async function addBrowserListener (
         : [browserLoggerConfig];
 
       for (const listenerConfig of browserListenerConfigs) {
-        window.document.querySelector(listenerConfig.selector).addEventListener(listenerConfig.event, () => {
-          window[browserLoggerToken](listenerConfig.message);
-        });
+        window.document.querySelector(listenerConfig.selector)
+          ?.addEventListener(listenerConfig.event, () => {
+            (window as { [key: string]: any })[browserLoggerToken](listenerConfig.message);
+          });
       }
     };
   }

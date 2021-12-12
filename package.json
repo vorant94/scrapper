@@ -3,25 +3,19 @@
   "version": "1.0.0",
   "description": "A bunch of scripts for web scrapping",
   "scripts": {
-    "rutracker": "ts-node src/rutracker",
-    "lint": "eslint --ext .ts ."
+    "build:watch": "tsc --watch",
+    "rutracker": "node ./dist/rutracker"
   },
   "keywords": [],
   "author": "vorant94",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^16.11.12",
     "@types/puppeteer": "^5.4.4",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.6.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0"
+    "typescript": "^4.5.3"
   },
   "dependencies": {
     "env-schema": "^3.5.0",
-    "puppeteer": "^11.0.0",
-    "ts-node": "^10.4.0"
+    "puppeteer": "^11.0.0"
   }
 }
