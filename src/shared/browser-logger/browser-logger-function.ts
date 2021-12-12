@@ -1,3 +1,3 @@
-export function browserLoggerFunction (message: string): void {
+export function browserLoggerFunction(message: string): void {
   console.log('Browser log: ', message);
 }

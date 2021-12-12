@@ -1,5 +1,1 @@
-export interface SearchResult {
-  title: string,
-  category: string,
-  count: number
-}
+export type SearchResult = [string, string, string];

@@ -2,18 +2,26 @@ export const SCHEMA = {
   type: 'object',
   required: [
     'RUTRACKER_LOGIN',
-    'RUTRACKER_PASSWORD'
+    'RUTRACKER_PASSWORD',
+    'TELEGRAM_BOT_TOKEN',
+    'TELEGRAM_CHAT_ID',
   ],
   properties: {
     PUPPETEER_HEADLESS: {
       type: 'boolean',
-      default: false
+      default: false,
     },
     RUTRACKER_LOGIN: {
-      type: 'string'
+      type: 'string',
     },
     RUTRACKER_PASSWORD: {
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+    TELEGRAM_BOT_TOKEN: {
+      type: 'string',
+    },
+    TELEGRAM_CHAT_ID: {
+      type: 'string',
+    },
+  },
 };

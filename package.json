@@ -4,18 +4,28 @@
   "description": "A bunch of scripts for web scrapping",
   "scripts": {
     "build:watch": "tsc --watch",
-    "rutracker": "node ./dist/rutracker"
+    "rutracker": "node ./dist/rutracker",
+    "lint": "eslint . --fix"
   },
   "keywords": [],
   "author": "vorant94",
   "license": "ISC",
   "devDependencies": {
+    "@types/markdown-table": "^2.0.0",
     "@types/node": "^16.11.12",
     "@types/puppeteer": "^5.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
     "typescript": "^4.5.3"
   },
   "dependencies": {
     "env-schema": "^3.5.0",
-    "puppeteer": "^11.0.0"
+    "markdown-table": "^2.0.0",
+    "puppeteer": "^11.0.0",
+    "telegraf": "^4.5.2"
   }
 }
