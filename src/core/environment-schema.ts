@@ -3,7 +3,7 @@ import { Environment } from './environment';
 
 const { boolean, number, object, string } = joi.types();
 
-export const SCHEMA: ObjectSchema<Environment> = object
+export const ENVIRONMENT_SCHEMA: ObjectSchema<Environment> = object
   .keys({
     PUPPETEER_HEADLESS: boolean.default(true),
     DATABASE_FILENAME: string.default('tmp/database.db'),

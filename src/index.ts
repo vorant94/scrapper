@@ -1,4 +1,4 @@
-import { Environment, SCHEMA } from './core';
+import { Environment, ENVIRONMENT_SCHEMA } from './core';
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { BROWSER_LOGGER_TOKEN, browserLoggerFunction } from './shared';
 import { config } from 'dotenv';
@@ -9,7 +9,9 @@ import { Telegraf } from 'telegraf';
 
 (async () => {
   const { parsed } = config();
-  const environment: Environment = await SCHEMA.validateAsync(parsed);
+  const environment: Environment = await ENVIRONMENT_SCHEMA.validateAsync(
+    parsed,
+  );
 
   const browser: Browser = await puppeteer.launch({
     headless: environment.PUPPETEER_HEADLESS,
