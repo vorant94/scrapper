@@ -1,8 +1,20 @@
-.idea
-
-node_modules
+# compiled output
 dist
 
+# dependencies
+node_modules
+
+# IDEs and editors
+.idea
+
+# Local Environment
 .env
 
-rutracker-*.png
+# Yarn (using Zero-Installs)
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
