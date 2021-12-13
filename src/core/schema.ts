@@ -5,7 +5,8 @@ const { boolean, number, object, string } = joi.types();
 
 export const SCHEMA: ObjectSchema<Environment> = object
   .keys({
-    PUPPETEER_HEADLESS: boolean.default(false),
+    PUPPETEER_HEADLESS: boolean.default(true),
+    DATABASE_FILENAME: string.default('tmp/database.db'),
     RUTRACKER_USERNAME: string.required(),
     RUTRACKER_PASSWORD: string.required(),
     TELEGRAM_BOT_TOKEN: string.required(),

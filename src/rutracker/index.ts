@@ -1,20 +1,23 @@
 import { ElementHandle, Page } from 'puppeteer';
-import { Credentials, SearchResult } from '../shared';
-import { login } from './login';
-import { tracker } from './tracker';
+import { RutrackerCredentials, rutrackerLogin } from './rutracker-login';
+import { Database } from 'sqlite';
+import { RutrackerSearchResult, rutrackerTracker } from './rutracker-tracker';
 
 export async function rutracker(
   page: Page,
-  credentials: Credentials,
-): Promise<SearchResult[]> {
+  credentials: RutrackerCredentials,
+  db: Database,
+): Promise<RutrackerSearchResult[]> {
   await page.goto('https://rutracker.org');
 
   const isLoggedIn: ElementHandle<HTMLElement> | null = await page.$(
     '#logged-in-username',
   );
   if (!isLoggedIn) {
-    await login(page, credentials.username, credentials.password);
+    await rutrackerLogin(page, credentials.username, credentials.password);
   }
 
-  return await tracker(page);
+  return await rutrackerTracker(page, db);
 }
+
+export { RutrackerSearchResult } from './rutracker-tracker';

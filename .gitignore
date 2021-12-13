@@ -9,6 +9,7 @@ node_modules
 
 # Local Environment
 .env
+tmp
 
 # Yarn (using Zero-Installs)
 .yarn/*

@@ -1,13 +1,11 @@
 import { Environment, SCHEMA } from './core';
 import puppeteer, { Browser, Page } from 'puppeteer';
-import {
-  BROWSER_LOGGER_TOKEN,
-  browserLoggerFunction,
-  SearchResult,
-} from './shared';
-import { rutracker } from './rutracker';
-import { Telegraf } from 'telegraf';
+import { BROWSER_LOGGER_TOKEN, browserLoggerFunction } from './shared';
 import { config } from 'dotenv';
+import { open } from 'sqlite';
+import sqlite3 from 'sqlite3';
+import { rutracker, RutrackerSearchResult } from './rutracker';
+import { Telegraf } from 'telegraf';
 
 (async () => {
   const { parsed } = config();
@@ -19,12 +17,19 @@ import { config } from 'dotenv';
   const page: Page = await browser.newPage();
   await page.exposeFunction(BROWSER_LOGGER_TOKEN, browserLoggerFunction);
 
-  const res: SearchResult[] = await rutracker(page, {
-    username: environment.RUTRACKER_USERNAME,
-    password: environment.RUTRACKER_PASSWORD,
+  const db = await open({
+    filename: environment.DATABASE_FILENAME,
+    driver: sqlite3.Database,
   });
 
-  await browser.close();
+  const res: RutrackerSearchResult[] = await rutracker(
+    page,
+    {
+      username: environment.RUTRACKER_USERNAME,
+      password: environment.RUTRACKER_PASSWORD,
+    },
+    db,
+  );
 
   const bot = new Telegraf(environment.TELEGRAM_BOT_TOKEN);
   await bot.telegram.sendMessage(
@@ -32,4 +37,7 @@ import { config } from 'dotenv';
     `Hi, sir, here are your results:\n\n<pre>${JSON.stringify(res)}</pre>`,
     { parse_mode: 'HTML' },
   );
+
+  await browser.close();
+  await db.close();
 })();

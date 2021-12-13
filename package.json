@@ -6,7 +6,7 @@
     "start": "node ./dist",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "lint": "eslint . --fix"
+    "lint": "eslint ./src --fix"
   },
   "keywords": [],
   "author": "vorant94",
@@ -27,6 +27,8 @@
     "dotenv": "^10.0.0",
     "joi": "^17.5.0",
     "puppeteer": "^11.0.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2",
     "telegraf": "^4.5.2"
   },
   "packageManager": "yarn@3.1.1"
