@@ -1,4 +1,4 @@
-export interface Env {
+export interface Environment {
   PUPPETEER_HEADLESS: boolean;
   RUTRACKER_USERNAME: string;
   RUTRACKER_PASSWORD: string;

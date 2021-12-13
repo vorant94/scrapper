@@ -1,5 +1,4 @@
-import { Env, SCHEMA } from './core';
-import { envSchema } from 'env-schema';
+import { Environment, SCHEMA } from './core';
 import puppeteer, { Browser, Page } from 'puppeteer';
 import {
   BROWSER_LOGGER_TOKEN,
@@ -8,28 +7,28 @@ import {
 } from './shared';
 import { rutracker } from './rutracker';
 import { Telegraf } from 'telegraf';
+import { config } from 'dotenv';
 
 (async () => {
-  const config: Env = envSchema<Env>({
-    schema: SCHEMA,
-    dotenv: true,
-  });
+  const { parsed } = config();
+  const environment: Environment = await SCHEMA.validateAsync(parsed);
+
   const browser: Browser = await puppeteer.launch({
-    headless: config.PUPPETEER_HEADLESS,
+    headless: environment.PUPPETEER_HEADLESS,
   });
   const page: Page = await browser.newPage();
   await page.exposeFunction(BROWSER_LOGGER_TOKEN, browserLoggerFunction);
 
   const res: SearchResult[] = await rutracker(page, {
-    username: config.RUTRACKER_USERNAME,
-    password: config.RUTRACKER_PASSWORD,
+    username: environment.RUTRACKER_USERNAME,
+    password: environment.RUTRACKER_PASSWORD,
   });
 
   await browser.close();
 
-  const bot = new Telegraf(config.TELEGRAM_BOT_TOKEN);
+  const bot = new Telegraf(environment.TELEGRAM_BOT_TOKEN);
   await bot.telegram.sendMessage(
-    config.TELEGRAM_CHAT_ID,
+    environment.TELEGRAM_CHAT_ID,
     `Hi, sir, here are your results:\n\n<pre>${JSON.stringify(res)}</pre>`,
     { parse_mode: 'HTML' },
   );
