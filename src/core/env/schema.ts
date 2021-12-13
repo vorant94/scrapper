@@ -1,7 +1,7 @@
 export const SCHEMA = {
   type: 'object',
   required: [
-    'RUTRACKER_LOGIN',
+    'RUTRACKER_USERNAME',
     'RUTRACKER_PASSWORD',
     'TELEGRAM_BOT_TOKEN',
     'TELEGRAM_CHAT_ID',
@@ -11,7 +11,7 @@ export const SCHEMA = {
       type: 'boolean',
       default: false,
     },
-    RUTRACKER_LOGIN: {
+    RUTRACKER_USERNAME: {
       type: 'string',
     },
     RUTRACKER_PASSWORD: {
