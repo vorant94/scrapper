@@ -22,7 +22,7 @@ export async function updateRutrackerCategories(
   await Promise.all(
     categories.map((category) =>
       db.run(
-        `INSERT INTO rutracker_category(innerHTML, value)
+        `INSERT INTO category(innerHTML, value)
          VALUES (?, ?)`,
         [category.innerHTML, category.value],
       ),

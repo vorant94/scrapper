@@ -12,12 +12,12 @@ export async function rutrackerTracker(
 
   const categories: RutrackerCategory[] = await db.all(
     `SELECT DISTINCT innerHTML, value
-     FROM rutracker_category`,
+     FROM category`,
   );
 
   const queries: RutrackerSearchQuery[] = await db.all(
     `SELECT DISTINCT title, category
-     FROM rutracker_search_query`,
+     FROM search_query`,
   );
 
   return await Promise.all(
